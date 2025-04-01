@@ -1,0 +1,531 @@
+
+/* ____________________________Logo______________________________________ */
+
+.logo img {
+  width: 150px; /* Passe die Größe nach Wunsch an */
+  height: 150px; /* Erhält das Seitenverhältnis */
+}
+
+/* ____________________________Sektion allgemein______________________________________ */
+
+body /* Der körper - hintergrund*/ {
+  padding: 0px 5px;
+  margin: 0px 5px;
+  font-family: Montserrat, sans-serif; /* Setzt die Schriftart */
+  background-color: #F5F5DC;
+}
+
+h1, h2, h3, p /* Setzt die Farbe für alle Überschriften */ {
+  color: #2C3E50;
+}
+
+/* ____________________________Header______________________________________ */
+
+header {
+  background-color: #F5F5DC;
+  padding: 5px 0;
+  margin: 5px 0x;
+  height: 50px;
+  display: flex;
+  justify-content: space-between;  /* Teilt den Platz zwischen dem Logo und den Menüpunkten */
+  align-items: center;            /* Vertikale Ausrichtung der Items */
+}
+
+/* Logo (linksbündig) */
+header .logo {
+  font-size: 20px;
+  font-weight: bold;
+  text-align: left;
+  text-decoration: none; /* Entfernt den Unterstrich */
+}
+
+/* Menü (zentriert im Header) */
+header .menu {
+  display: flex;
+  justify-content: right; /* Zentriert die Menüpunkte */
+  color: #2C3E50;
+  flex-grow: 1;            /* Nutzt den restlichen verfügbaren Platz */
+}
+
+/* Menüpunkte-Styling */
+header a {
+  color: #2C3E50;          /* Textfarbe der Links */
+  font-weight: bold;
+  text-decoration: none;   /* Entfernt den Unterstrich */
+  font-size: 18px;
+  padding: 5px 8px;      /* Vergrößert die Klickfläche */
+  display: flex;
+  align-items: center;     /* Vertikale Ausrichtung von Icon und Text */
+  transition: border-bottom 0.1s; /* Übergangseffekt bei Hover */
+}
+
+/* Hover-Effekt für die Links */
+header .menu a:hover {
+  border-bottom: 1.5px solid #2C3E50; /* Unterstreicht den Link bei Hover */
+}
+
+/* Stil für Icons */
+header .menu a i {
+  margin-right: 8px; /* Abstand zwischen Icon und Text */
+  font-size: 20px; /* Größe der Icons */
+}
+
+/* ____________________________Über mich, Galerie, Kontakt______________________________________ */
+
+/* Alle anderen Seiten "Über mich, Galerie, Kontakt*/
+.seite {
+  margin: 5px 5px;  /* Zentriert die Sektion (5% links, 5% rechts Abstand) */
+  padding: 5px 5px;  /* Zentriert die Sektion (5% links, 5% rechts Abstand) */ 
+  border-radius: 8px;
+  object-fit: contain; /* Bild wird skaliert, um den Raum auszufüllen, ohne Verzerrungen */
+  display: none;
+  opacity: 0;
+  transition: opacity 0.5s ease-in-out;
+}
+
+.aktiv {
+  display: block;
+  opacity: 1;
+}
+
+/* ____________________________2 Spalten beim Willkommen______________________________________ */
+
+/* Container für das Bild zentrieren */
+.home {
+  display: flex; /* Flexbox verwenden */
+  justify-content: center; /* Bild horizontal zentrieren */
+  align-items: center; /* Bild vertikal zentrieren */
+  height: 50vh; /* Höhe des Containers auf volle Bildschirmhöhe setzen */
+  padding: 0; /* Kein Padding im Container */
+  margin: 0; /* Kein Margin im Container */
+}
+
+/* Bild im Container */
+.home img {
+  width: 20%;  /* Bildgröße anpassen (kleiner machen) */
+  height: auto; /* Höhe bleibt proportional zur Breite */
+  padding: 0;   /* Kein Padding um das Bild */
+  margin: 0;    /* Kein Margin um das Bild */
+  border: none; /* Keine Umrandung */
+  box-shadow: none; /* Kein Schatten */
+}
+
+/* ____________________________Karussel______________________________________ */
+
+/* Wrapper: Nur der sichtbare Bereich */
+.image-bar-wrapper {
+  width: 100%;
+  overflow: hidden;
+  position: relative;
+  margin: 20px 0;
+  white-space: nowrap;
+}
+
+/* Container der Bilder */
+.image-bar {
+  display: flex;
+  /* Animation läuft unendlich; Dauer kannst du anpassen */
+  animation: scroll 30s linear infinite;
+  /* CSS-Variable, die die Scroll-Distanz enthält */
+  --scroll-width: 0px;
+}
+
+/* Bilder */
+.image-bar img {
+  width: 200px;   /* Passe die Breite an */
+  height: 150px;  /* Passe die Höhe an */
+  object-fit: contain; /* Bild wird skaliert, um den Raum auszufüllen, ohne Verzerrungen */
+  margin: 0 5px;
+  flex-shrink: 0;
+  transition: transform 0.3s ease;
+}
+
+/* Hover-Effekt */
+.image-bar img:hover {
+  transform: scale(1.1);
+}
+
+/* Animation pausiert beim Hover */
+.image-bar-wrapper:hover .image-bar {
+  animation-play-state: paused;
+  gap: 2px;
+}
+
+/* Endlose Animation, die den Container um --scroll-width verschiebt */
+@keyframes scroll {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(calc(-1 * var(--scroll-width)));
+  }
+}
+
+/* ____________________________Kontakt______________________________________ */
+
+.contact-container {
+  display: flex;
+  padding: 10px;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: stretch; /* Beide Spalten gleich hoch */
+  gap: 20px; /* Abstand zwischen den beiden Spalten */
+}
+
+
+.contact-form-column,
+.social-qr {
+  flex: 1;
+  min-height: 300px; /* Anpassen je nach Bedarf */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+
+/* Linke Spalte: Kontaktformular */
+.contact-form-column {
+  flex: 1;
+  max-width: 50%;
+  padding: 10px;
+  background-color: #F5F5DC;
+  border-radius: 10px;
+  box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.2);
+}
+
+/* Container für den gesamten QR-Code-Bereich */
+.social-qr {
+  display: flex;
+  max-width: 50%;
+  flex-direction: column; /* Elemente werden untereinander angeordnet */
+  align-items: center; /* Zentriert den Inhalt */
+  justify-content: center;
+  text-align: center; /* Text zentrieren */
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.2);
+}
+
+/* Flexbox für QR-Code und @-Symbol */
+.qr-at-container {
+  display: flex;
+  flex-direction: row; /* QR-Code und @-Symbol nebeneinander */
+  align-items: center; /* Vertikal zentrieren */
+  margin-bottom: 20px;
+}
+
+/* QR-Code Container */
+#qr-code {
+  width: 100px;
+  height: 100px;
+  background-color: #F5F5DC; /* Beispielhintergrund */
+}
+
+/* Formular Felder */
+.contact-form-column form {
+  display: flex;
+  background-color: #F5F5DC;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.contact-form-column input,
+.contact-form-column textarea {
+  padding: 10px;
+  border: 1px solid #2C3E50;
+  border-radius: 4px;
+  font-size: 16px;
+}
+
+.contact-form-column button {
+  margin-top: 15px;
+  padding: 10px;
+  background-color: #F5F5DC;
+  color: #2C3E50;
+  border: 2px solid #2C3E50; 
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.contact-form-column button:hover {
+  background-color: #F5F5DC;
+}
+
+/* ____________________________Gallery______________________________________ */
+
+/* Grid für die Galerie */
+.gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr); /* 4 Spalten */
+  gap: 15px; /* Abstand zwischen den Bildern */
+  padding: 20px;
+  justify-content: center;
+}
+
+/* Bilder einheitlich groß halten */
+#gallery img {
+  width: 100%; /* Volle Breite der Spalte */
+  height: 250px; /* Feste Höhe für alle Bilder */
+  object-fit: contain; /* Bild wird skaliert, um den Raum auszufüllen, ohne Verzerrungen */
+  border-radius: 10px;
+  box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.2);
+  transition: transform 0.3s ease;
+}
+
+/* Hover-Effekt für die Bilder */
+.gallery-grid img:hover {
+  transform: scale(1.05);
+}
+
+/* Text unter den Bildern (z. B. Datum) */
+.gallery-grid .image-caption {
+  text-align: center; /* Datum in die Mitte */
+  font-size: 14px;
+  color: #2C3E50;
+  margin-top: 5px;
+}
+
+/* ____________________________Animal Paintings______________________________________ */
+
+.animal-paintings-grid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr); /* 5 Spalten für Animal Paintings */
+  gap: 15px;
+  padding: 20px;
+  justify-content: center;
+}
+
+/* Bilder einheitlich groß halten */
+#animal-paintings img {
+  width: 100%; /* Volle Breite der Spalte */
+  height: 250px; /* Feste Höhe für alle Bilder */
+  object-fit: contain; /* Bild wird skaliert, um den Raum auszufüllen, ohne Verzerrungen */
+  border-radius: 10px;
+  box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.2);
+  transition: transform 0.3s ease;
+}
+
+/* Hover-Effekt für die Bilder */
+.animal-paintings-grid img:hover {
+  transform: scale(1.05);
+}
+
+/* Text unter den Bildern (z. B. Datum) */
+.animal-paintings .image-caption {
+  text-align: center; /* Datum in die Mitte */
+  font-size: 14px;
+  color: #2C3E50;
+  margin-top: 5px;
+}
+
+/* ___________________________Landscape/Sea painting______________________________________ */
+
+.landscape-sea-paintings-grid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr); /* 5 Spalten für Animal Paintings */
+  gap: 15px;
+  padding: 20px;
+  justify-content: center;
+}
+
+/* Bilder einheitlich groß halten */
+#landscape-sea-paintings img {
+  width: 100%; /* Volle Breite der Spalte */
+  height: 250px; /* Feste Höhe für alle Bilder */
+  object-fit: contain; /* Bild wird skaliert, um den Raum auszufüllen, ohne Verzerrungen */
+  border-radius: 10px;
+  box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.2);
+  transition: transform 0.3s ease;
+}
+
+/* Hover-Effekt für die Bilder */
+.landscape-sea-paintings-grid img:hover {
+  transform: scale(1.05);
+}
+
+/* Text unter den Bildern (z. B. Datum) */
+.landscape-sea-paintings .image-caption {
+  text-align: center; /* Datum in die Mitte */
+  font-size: 14px;
+  color: #2C3E50;
+  margin-top: 5px;
+}
+
+/* ___________________________Aufträge______________________________________ */
+
+.Aufträge-grid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr); /* 5 Spalten für Animal Paintings */
+  gap: 15px;
+  padding: 20px;
+  justify-content: center;
+}
+
+/* Bilder einheitlich groß halten */
+#Aufträge img {
+  width: 100%; /* Volle Breite der Spalte */
+  height: 250px; /* Feste Höhe für alle Bilder */
+  object-fit: contain; /* Bild wird skaliert, um den Raum auszufüllen, ohne Verzerrungen */
+  border-radius: 10px;
+  box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.2);
+  transition: transform 0.3s ease;
+}
+
+/* Hover-Effekt für die Bilder */
+.Aufträge-grid img:hover {
+  transform: scale(1.05);
+}
+
+/* Text unter den Bildern (z. B. Datum) */
+.Aufträge .image-caption {
+  text-align: center; /* Datum in die Mitte */
+  font-size: 14px;
+  color: #2C3E50;
+  margin-top: 5px;
+}
+
+/* ____________________________Button siehe mehr______________________________________ */
+
+/* Container für den Button */
+.see-more-button-container {
+  text-align: right;  /* Positioniert den Button nach rechts */
+  margin: 5 px 5px;    /* Abstand nach oben */
+}
+
+.see-more-button {
+  display: inline-block;    
+  padding: 10px 20px;
+  font-size: 18px;
+  background-color: #F5F5DC;
+  color: #2C3E50 !important; /* Stellt sicher, dass der Text weiß bleibt */
+  border: 2px solid #2C3E50; 
+  border-radius: 4px;
+  text-decoration: none !important; /* Entfernt die Unterstreichung */
+  transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+/* Hover-Effekt */
+.see-more-button:hover {
+  background-color: #F5F5DC; 
+  transform: scale(1.05);
+}
+
+/* Falls der Button ein Link ist, sicherstellen, dass er nicht lila wird */
+.see-more-button:visited {
+  color: #2C3E50 !important; 
+}
+
+.see-more-button:link,
+.see-more-button:visited,
+.see-more-button:hover,
+.see-more-button:active {
+  color: #2C3E50 !important; 
+  text-decoration: none !important;
+}
+
+.contact-image-column {
+  text-align: center;
+  padding: 20px;
+}
+
+/* ____________________________Sidetool______________________________________ */
+
+/* Standard Sidebar-Styles */
+.sidebar {
+  width: 250px;
+  position: fixed;
+  top: 0;
+  left: -250px; /* Sidebar ist anfangs außerhalb des Bildschirms */
+  height: 100vh;
+  padding: 10px;
+  background: #F5F5DC;
+  transition: left 0.3s ease; /* Animation für das Einblenden */
+  z-index: 1000; /* Damit die Sidebar über dem Inhalt liegt */
+}
+
+.sidebar ul {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+
+/* Nur das erste Listenelement bekommt einen Abstand von 50px nach oben */
+.sidebar ul li:first-child {
+  margin-top: 50px;
+}
+
+/* Alle anderen Listenelemente haben standardmäßigen Abstand */
+.sidebar ul li {
+  margin: 0 0 10px 0; /* Nur unten 10px Abstand */
+}
+
+.sidebar ul li a {
+  text-decoration: none;
+  color: #2C3E50;
+  padding: 10px;
+  display: block;
+  border-radius: 5px;
+
+}
+
+.sidebar ul li a:hover {
+  background-color: #F5F5DC;
+}
+
+/* Toggle Button */
+.sidebar-toggle {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  font-size: 30px;
+  background-color: transparent;
+  border: none;
+  color: #2C3E50;
+  cursor: pointer;
+  z-index: 1100; /* Damit der Button über der Sidebar liegt */
+}
+
+/* Unscharfer Hintergrund Overlay */
+.sidebar-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.3); /* Dunkler Hintergrund */
+  backdrop-filter: blur(5px); /* Weichzeichnen des Hintergrunds */
+  z-index: 900; /* Unter der Sidebar */
+  display: none; /* Anfangs unsichtbar */
+}
+
+/* Sidebar sichtbar machen */
+.sidebar.open {
+  left: 0; /* Sidebar bewegt sich in den sichtbaren Bereich */
+}
+
+/* Unscharfer Hintergrund sichtbar machen, wenn Sidebar geöffnet ist */
+.sidebar.open + .sidebar-overlay {
+  display: block;
+}
+
+/* Responsive für Mobile */
+@media (max-width: 768px) {
+  .sidebar {
+    width: 100%;
+    left: -100%; /* Sidebar bleibt außerhalb des Bildschirms */
+  }
+
+  .sidebar.open {
+    left: 0; /* Sidebar wird bei "open" vollständig eingeblendet */
+  }
+}
+
+/* ____________________________FAQ______________________________________ */
+
+faq-section {
+  padding: 20px;
+  max-width: 50%;
+  background-color: #F5F5DC;
+  border-radius: 10px;
+  box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.2);
+}
